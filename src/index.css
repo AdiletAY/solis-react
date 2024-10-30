@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+    --black-color: #000;
+    --white-color: #fff;
+    --yellow-color: #ffc107;
+    --gray-color: #eaeaea;
+    --red-color: #9d0000;
+    --font-family: "Montserrat", sans-serif;
+}

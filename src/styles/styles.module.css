@@ -1,0 +1,797 @@
+  *,
+  *::after,
+  *::before {
+      font-family: var(--font-family);
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+  }
+
+  html {
+      scroll-behavior: smooth;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+      margin: 0;
+  }
+
+  a {
+      text-decoration: none;
+  }
+
+  ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+  }
+
+  p {
+      margin: 0;
+  }
+
+  body {
+      min-height: 100vh;
+      font-family: var(--font-family);
+      overflow-x: hidden;
+  }
+
+  header.header #language {
+      background-color: var(--black-color);
+      color: var(--white-color);
+      cursor: pointer;
+      padding: .25rem;
+      border-radius: .75rem;
+  }
+
+  .container {
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+  }
+
+  .fullwidth {
+      width: 100vw;
+      transform: translateX(-50%);
+      position: relative;
+      left: 50%;
+  }
+
+  .contactsBlock {
+      background-color: var(--black-color);
+  }
+
+  .contacts {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 20px 0;
+      color: var(--white-color);
+  }
+
+  .phoneBlock {
+      display: flex;
+      gap: 8px;
+      font-size: 16px;
+  }
+
+  .phoneNumber {
+      text-decoration: underline;
+      text-underline-offset: 6px;
+      color: var(--white-color);
+      transition: color 0.3s;
+  }
+
+  .phoneNumber:hover {
+      color: var(--yellow-color);
+  }
+
+  .button {
+      background-color: var(--yellow-color);
+      text-decoration: none;
+      transition: background-color 0.3s;
+  }
+
+  .button:hover {
+      background-color: #fdd318;
+  }
+
+  #burger_btn {
+      display: none;
+      color: var(--white-color);
+      cursor: pointer;
+      font-size: 32px;
+  }
+
+  .headerApplicationButton {
+      border-radius: 62px;
+      width: 220px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--black-color);
+      font-size: 18px;
+  }
+
+  .headerBlockBg {
+      background: no-repeat center/cover url("../assets/img/main-background.jpg");
+  }
+
+  .headerBlock {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+  }
+
+  .headerLogo img {
+      display: block;
+      max-width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+  }
+
+  nav {
+      flex: 1;
+  }
+
+  .navList {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+  }
+
+  .navList li {
+      list-style: none;
+  }
+
+  .navLink {
+      color: var(--white-color);
+      padding: 4px;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.5s;
+  }
+
+  .navLink:hover {
+      border-color: var(--white-color);
+  }
+
+  .solis {
+      padding: 200px 0 200px;
+      text-align: center;
+  }
+
+  .mainTitle {
+      padding: 10px 0;
+      font-size: 96px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--yellow-color);
+      border-top: 2px solid var(--white-color);
+      border-bottom: 2px solid var(--white-color);
+  }
+
+  .subtitle {
+      font-size: 30px;
+      font-weight: 500;
+      line-height: 123%;
+  }
+
+  .solisSubtitle {
+      margin-top: 60px;
+      color: var(--white-color);
+  }
+
+  .mainButton {
+      display: inline-block;
+      margin-top: 60px;
+      color: var(--black-color);
+      font-weight: 700;
+      padding: 30px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+  }
+
+  .mainButton:hover {
+      background-color: #fdd318;
+  }
+
+
+  .imageGallery {
+      margin: 0;
+      display: grid;
+      grid-auto-flow: column;
+      place-content: center;
+  }
+
+  .imageCard {
+      display: grid;
+      overflow: hidden;
+      cursor: pointer;
+  }
+
+  .imageCard>* {
+      grid-area: 1/1;
+      transition: 0.4s;
+  }
+
+  .imageCaption {
+      display: grid;
+      align-items: end;
+      font-family: sans-serif;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #0000;
+      padding: 0.75rem;
+      background: var(--captionBackground, #0009);
+      clip-path: inset(0 var(--clipInset, 100%) 0 0);
+      margin: -1px;
+  }
+
+  .imageCard:hover .imageCaption {
+      --clipInset: 0%;
+  }
+
+  .imageCard:hover img {
+      transform: scale(1.2);
+  }
+
+  @supports not (-webkit-mask-clip: text) {
+      .imageCaption {
+
+          color: #fff;
+      }
+  }
+
+
+  main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 160px;
+      padding-top: 120px;
+      background: no-repeat right/contain url("../assets/img/main-bg.png");
+  }
+
+
+  .title {
+      font-size: 50px;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-align: center;
+      margin-top: 60px;
+      margin-bottom: 40px;
+  }
+
+  .casesBlock {
+      width: 100%;
+      margin-top: 60px;
+      margin-bottom: 60px;
+  }
+
+  .advantages {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 60px;
+  }
+
+  .caseCard {
+      max-width: 480px;
+      padding: 36px 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(240deg, var(--gray-color) 50%, var(--yellow-color) 50%);
+      border-radius: 8px;
+      cursor: pointer;
+  }
+
+  .caseInfo {
+      max-width: 200px;
+  }
+
+  .caseText {
+      margin-top: 40px;
+  }
+
+  .casePartnerImg {
+      max-width: 50%;
+  }
+
+  .casePartnerImg img {
+      display: block;
+      max-width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+  }
+
+  .service {
+      width: 400px;
+      height: 400px;
+      padding: 30px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      background: no-repeat center/cover url("../assets/img/service-img.png");
+      cursor: pointer;
+  }
+
+  .service:hover .serviceInfo {
+      gap: 20px;
+  }
+
+  .serviceInfo {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      padding-bottom: 40px;
+  }
+
+  .serviceTitle {
+      color: var(--white-color);
+      font-size: 18px;
+      width: 100%;
+      text-align: center;
+      line-height: 120%;
+      font-weight: 500;
+  }
+
+  .teamBlock {
+      width: 100%;
+  }
+
+  .titleUnderline {
+      border-bottom: 3px solid var(--yellow-color);
+  }
+
+  .tab-group {
+      width: 300px;
+      margin: 40px auto 0;
+      display: flex;
+      border: 1px solid #000;
+  }
+
+  .tab {
+      flex: 1;
+      text-align: center;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition:
+          background-color 0.3s,
+          color 0.3s;
+  }
+
+  .tab.active {
+      background-color: #000;
+      color: white;
+  }
+
+  .tab:not(.active) {
+      background-color: #fff;
+      color: black;
+  }
+
+  .tab:hover {
+      opacity: 0.8;
+  }
+
+  .teammate {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 40px;
+  }
+
+  .teammateInfo {
+      margin-top: 16px;
+      padding: 0 0 10px 10px;
+      border-left: 2px solid var(--red-color);
+      text-transform: uppercase;
+  }
+
+  .teammateName {
+      font-weight: 700;
+  }
+
+  .teammatePosition {
+      margin-top: 8px;
+      font-weight: 500;
+  }
+
+  .advantage {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+  }
+
+  .advantageIcon {
+      max-width: 120px;
+      max-height: 120px;
+      overflow: hidden;
+      border-radius: 50%;
+      border: 2px solid var(--yellow-color);
+      padding: 16px;
+  }
+
+  .advantageIcon img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+  }
+
+  .advantageText {
+      max-width: 320px;
+  }
+
+  .feedback {
+      background: var(--yellow-color);
+      border-radius: 8px;
+      padding: 30px;
+      text-align: center;
+      position: relative;
+  }
+
+  .feedbackText {
+      max-width: 650px;
+      line-height: 100%;
+  }
+
+  .feedbackText::before {
+      content: "“";
+      font-size: 60px;
+      color: #381ddb;
+  }
+
+  .feedbackText::after {
+      content: "„";
+      font-size: 60px;
+      color: #381ddb;
+      line-height: 0;
+  }
+
+  .feedbackPerson {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .personImg {
+      max-width: 80px;
+      max-height: 80px;
+      overflow: hidden;
+      border-radius: 50%;
+  }
+
+  .personImg img {
+      display: block;
+      max-width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+  }
+
+  .personName {
+      margin-top: 10px;
+      font-weight: 800;
+      font-size: 20px;
+      line-height: 140%;
+  }
+
+  .partners-list {
+      margin-top: 40px;
+      display: flex;
+      gap: 20px;
+  }
+
+  .partnerImg {
+      margin: auto;
+  }
+
+  .partnerImg img {
+      display: block;
+      max-width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+  }
+
+  .applicationBlockFull {
+      padding: 60px 0 120px;
+      background: rgba(236, 236, 236, 0.56);
+  }
+
+  .applicationBlock {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .applicationSubtitle {
+      margin-top: 10px;
+      font-size: 30px;
+      font-weight: 500;
+  }
+
+  .applicationForm {
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      max-width: 600px;
+      width: 100%;
+  }
+
+  .formInput {
+      padding: 20px 40px;
+      border: 1px solid var(--black-color);
+  }
+
+  .buttonBlock {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      gap: 6px;
+  }
+
+  .applicationDescription {
+      font-size: 10px;
+  }
+
+  .applicationButton {
+      border: none;
+      color: var(--white-color);
+      font-size: 25px;
+      text-transform: uppercase;
+      padding: 20px 0;
+  }
+
+  .footer-bg {
+      background: no-repeat center/cover url("../assets/img/footer-bg.jpg");
+  }
+
+  .footer {
+      padding: 80px 0 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      color: var(--white-color);
+  }
+
+  .footer a {
+      color: var(--white-color);
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.5s;
+  }
+
+  .footer a:hover {
+      border-color: var(--white-color);
+  }
+
+  .footerTop {
+      display: flex;
+      justify-content: space-between;
+  }
+
+  .footerLeft {
+      max-width: 340px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+  }
+
+  .footerLogo {
+      max-width: 356px;
+      max-height: 88px;
+  }
+
+  .footerLogo img {
+      display: block;
+      max-width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+  }
+
+  .footerRight {
+      max-width: 1000px;
+      display: flex;
+      gap: 50px;
+  }
+
+  .footerTitle {
+      font-size: 30px;
+      line-height: 133%;
+      font-weight: 500;
+      margin-bottom: 30px;
+  }
+
+  .footerList {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+  }
+
+  .footerDocs {
+      max-width: 300px;
+  }
+
+  .textUnderline {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+  }
+
+  .overflow-hidden {
+      overflow: hidden !important;
+  }
+
+  /* swiper */
+  .swiper {
+      width: 100%;
+      margin-top: 60px;
+  }
+
+  /* swiper */
+
+  @media (max-width: 1024px) {
+      .container {
+          padding-left: 40px;
+          padding-right: 40px;
+      }
+
+      .mainTitle {
+          font-size: 50px;
+      }
+
+      .contacts-block span,
+      .contacts-block a {
+          font-size: .85rem;
+      }
+
+      .title {
+          font-size: 32px;
+      }
+
+      .headerApplicationButton {
+          width: 160px;
+          height: 35px;
+      }
+
+      .footerTop {
+          flex-direction: column;
+          align-items: center;
+          gap: 40px;
+      }
+
+      .underfooter {
+          text-align: center;
+      }
+  }
+
+  @media (max-width: 768px) {
+      .contacts-block {
+          display: none;
+      }
+
+      #burger_btn {
+          display: block;
+      }
+
+      .navList {
+          position: fixed;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 2rem;
+          top: 0;
+          right: 0;
+          width: 100%;
+          height: 100%;
+          background-color: #252525a6;
+          color: var(--black-color);
+          z-index: 10;
+          backdrop-filter: blur(10px);
+          pointer-events: none;
+          opacity: 0;
+          transition: opacity .33s ease-in-out;
+      }
+
+      #burger_close {
+          position: absolute;
+          top: 25px;
+          right: 25px;
+          font-size: 42px;
+          color: var(--white-color);
+          cursor: pointer;
+          user-select: none;
+      }
+
+      .navList[data-opened="true"] {
+          opacity: 1;
+          pointer-events: all;
+      }
+
+      .navList a {
+          font-size: 32px;
+      }
+  }
+
+  @media (max-width: 640px) {
+      .mainTitle {
+          font-size: 30px;
+      }
+
+      .footerRight {
+          flex-direction: column;
+      }
+  }
+
+  @media (max-width: 425px) {
+      .container {
+          padding-left: 20px;
+          padding-right: 20px;
+      }
+
+      .title {
+          font-size: 24px;
+      }
+
+      .mainTitle {
+          font-size: 50px;
+      }
+
+      .subtitle {
+          font-size: 20px;
+      }
+
+      .mainButton {
+          padding: 20px;
+          font-size: 14px;
+      }
+
+      .advantage {
+          gap: 10px;
+      }
+
+      .advantageIcon {
+          width: 60px;
+          height: 60px;
+          padding: 8px;
+          flex-shrink: 0;
+      }
+
+      .advantageText {
+          font-size: 14px;
+      }
+
+      .applicationSubtitle {
+          font-size: 16px;
+          text-align: center;
+      }
+
+      .applicationButton {
+          font-size: 18px;
+      }
+  }
+
+  @media (max-width: 375px) {
+      .headerLogo {
+          max-width: 280px;
+      }
+  }
