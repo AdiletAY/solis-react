@@ -1,5 +1,67 @@
 {
-    "Astana": "Астана",
-    "Almaty": "Алматы",
-    "Leave a request": "Өтініш қалдыру"
+    "header": {
+        "leaveRequest": "Өтінім қалдыру"
+    },
+    "navigation": {
+        "aboutUs": "Біз туралы",
+        "team": "Команда",
+        "news": "Жаңалықтар",
+        "services": "Қызметтер",
+        "testimonials": "Пікірлер"
+    },
+    "hero": {
+        "subtitle": "Озық шешімдер",
+        "getApplication": "Коммерциялық ұсынысты алу"
+    },
+    "pages": {
+        "home": {
+            "cases": "Кейстер",
+            "services": "Қызметтер",
+            "team": "Біздің команда",
+            "news": "Жаңалықтар",
+            "allNews": "Барлық жаңалықтар",
+            "advantages": "Артықшылықтар",
+            "feedback": "Пікірлер",
+            "ourPartners": "Серіктестеріміз"
+        }
+    },
+    "forms": {
+        "application": {
+            "title": "Қазір алыңыз",
+            "subtitle": "Коммерциялық ұсыныс",
+            "fullName": "Аты Жөні",
+            "phone": "Ұялы телефон",
+            "email": "Электронды пошта",
+            "term": "\"Алу\" батырмасын басу арқылы деректерді жинауға және өңдеуге келісім бересіз.",
+            "button": "Алу"
+        }
+    },
+    "footer": {
+        "navigation": {
+            "title": "Навигация",
+            "aboutUs": "Біз туралы",
+            "team": "Команда",
+            "news": "Жаңалықтар",
+            "services": "Қызметтер",
+            "testimonials": "Пікірлер"
+        },
+        "documents": {
+            "title": "Құжаттар",
+            "documents_templates": "Құжат үлгілері",
+            "notice": "Жауапкершіліктен бас тарту туралы мәлімдеме"
+        },
+        "contacts": {
+            "title": "Байланыстар"
+        },
+        "allRights": "Барлық құқықтар қорғалған немесе қорғалатын болады"
+    },
+    "common": {
+        "back_button": "Артқа",
+        "toasts": {
+            "success": "Сәтті",
+            "error": "Қате",
+            "application_send_success": "Өтінім жіберілді!",
+            "application_send_error": "Қате орын алды! Өтінім жіберілмеді!"
+        }
+    }
 }

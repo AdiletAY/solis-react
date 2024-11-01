@@ -1,5 +1,67 @@
 {
-    "Astana": "Астана",
-    "Almaty": "Алматы",
-    "Leave a request": "Оставить заявку"
+    "header": {
+        "leaveRequest": "Оставить заявку"
+    },
+    "navigation": {
+        "aboutUs": "О нас",
+        "team": "Команда",
+        "news": "Новости",
+        "services": "Услуги",
+        "testimonials": "Отзывы"
+    },
+    "hero": {
+        "subtitle": "Передовые решения",
+        "getApplication": "Получить коммерческое предложение"
+    },
+    "pages": {
+      "home": {
+        "cases": "Кейсы",
+        "services": "Услуги",
+        "team": "Наша команда",
+        "news": "Новости",
+        "allNews": "Все новости",
+        "advantages": "Преимущества",
+        "feedback": "Отзывы",
+        "ourPartners": "Наши партнёры"
+      }
+    },
+    "forms": {
+        "application": {
+            "title": "Получите прямо сейчас",
+            "subtitle": "коммерческое предложение",
+            "fullName": "Имя Фамилия",
+            "phone": "Мобильный телефон",
+            "email": "Эл. почта",
+            "term": "Нажимая кнопку \"Получить\" Вы предоставляете согласие на сбор и обработку данных.",
+            "button": "Получить"
+        }
+    },
+    "footer": {
+      "navigation": {
+        "title": "Навигация",
+        "aboutUs": "О нас",
+        "team": "Команда",
+        "news": "Новости",
+        "services": "Услуги",
+        "testimonials": "Отзывы"
+      },
+      "documents": {
+        "title": "Документы",
+        "documents_templates": "Шаблоны документов",
+        "notice": "Заявление об ограничении ответственности"
+      },
+      "contacts": {
+        "title": "Контакты"
+      },
+      "allRights": "Все права защищены либо будут защищены"
+    },
+  "common": {
+    "back_button": "Назад",
+    "toasts": {
+      "success": "Успешно",
+      "error": "Ошибка",
+      "application_send_success": "Заявка отправлена!",
+      "application_send_error": "Возникла ошибка! Заявка не отправлена!"
+    }
+  }
 }

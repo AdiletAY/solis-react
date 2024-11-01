@@ -1,9 +1,8 @@
-import { API_PATHS } from "@/shared/constants/api-paths";
-import axiosInstance from "../axios-instance";
+import axiosInstance, {baseURL} from "../axios-instance";
 import { NewsType } from "@/components/news";
 
-export default async function getNews(): Promise<NewsType[]> {
-    const response = await axiosInstance.get(API_PATHS.NEWS);
+export default async function getNews(limit: number = 0): Promise<NewsType[]> {
+    const response = await axiosInstance.get(`${baseURL}/items/news${limit?`?sort[]=-date_created&limit=${limit}`: ''}`);
     const data: NewsType[] = response.data.data;
     if (data) {
         return data;

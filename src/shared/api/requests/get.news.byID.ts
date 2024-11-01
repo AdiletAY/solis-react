@@ -1,7 +1,12 @@
-import { API_PATHS } from "@/shared/constants/api-paths";
-import axiosInstance from "../axios-instance";
+import axiosInstance, {baseURL} from "../axios-instance";
 
 
-export default async function getNewsById(id: number) {
-    return await axiosInstance.get(API_PATHS.NEWS_ITEM(id));
+export default async function getNewsById(id: number | string | undefined) {
+    if (!id) return
+    const response = await axiosInstance.get(`${baseURL}/items/news/${id}`);
+
+    if (response.data.data) {
+        return response.data.data;
+    }
+    throw new Error("News Not Fount!");
 }

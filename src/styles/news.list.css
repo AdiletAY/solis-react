@@ -50,6 +50,10 @@
 
 .news-list__content {
     padding: 15px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .news-list__item-title {

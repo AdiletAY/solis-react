@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import getNews from "@/shared/api/requests/get.news.all"
 import { getStaticImage } from '@/lib/helpers/get-static-img';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from "react-i18next";
 
 export type NewsType = {
     id: number;
@@ -20,16 +20,13 @@ export type NewsType = {
 }
 
 const News = () => {
+    const { t, i18n } = useTranslation();
     const [news, setNews] = useState<NewsType[]>([]);
-
-    const { i18n } = useTranslation();
-    const currentLanguage = i18n.language;
-
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data: NewsType[] = await getNews();
+                const data: NewsType[] = await getNews(5);
                 setNews(data);
 
 
@@ -44,26 +41,28 @@ const News = () => {
     if (!news.length) return null;
     return (
         <section className={styles.container} id="news">
-            <h2 className={styles.title}>Новости</h2>
+            <h2 className={styles.title}>{t('pages.home.news')}</h2>
 
 
             <Carousel className="w-full m-auto">
                 <CarouselContent>
-                    {news?.map(({ id, title_kk, photo }) => (
-                        <CarouselItem key={id} className="md:basis-1/2 lg:basis-1/3">
-                            <div className={styles.caseCard}>
-                                <Link to={`/news/${id}`} className={styles.caseCardLink} />
+                    {news?.map((newsItem) => (
+                        <CarouselItem key={newsItem.id} className="md:basis-1/2 lg:basis-1/3">
+                            <div className={`${styles.caseCard} h-full`}>
+                                <Link to={`/news/${newsItem.id}`} className={styles.caseCardLink} />
                                 <div className={styles.caseInfo}>
                                     <span> 02.03.2024 </span>
 
                                     <p className={styles.caseText}>
-                                        {title_kk}
+                                        {//@ts-ignore
+                                            newsItem[`title_${i18n.language}`]
+                                        }
                                     </p>
                                     <span className={styles.caseInfoBg} />
                                 </div>
 
                                 <div className={styles.casePartnerImg} >
-                                    <img src={getStaticImage(photo)} alt="partner logo" />
+                                    <img src={getStaticImage(newsItem.photo)} alt="partner logo" />
                                 </div>
                             </div>
                         </CarouselItem>
@@ -73,6 +72,9 @@ const News = () => {
                 <CarouselNext />
             </Carousel>
 
+            <div className='mt-7 w-full flex justify-center items-center'>
+                <Link to='/news' className='text-xl hover:underline'>{t('pages.home.allNews')}</Link>
+            </div>
 
         </section>
     )

@@ -1,12 +1,37 @@
 import styles from '@/styles/styles.module.css';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel';
 import Autoplay from "embla-carousel-autoplay"
-import partnerImg from "@/assets/images/icons/partner1.png";
+import {useEffect, useState} from "react";
+import getPartners from "@/shared/api/requests/get-partners.ts";
+import {getStaticImage} from "@/lib/helpers/get-static-img.ts";
+import {useTranslation} from "react-i18next";
+
+type PartnersType = {
+  id: number;
+  logo: string;
+  url: string;
+  company: string;
+}
 
 const Partners = () => {
+  const {t} = useTranslation();
+  const [partners, setPartners] = useState<PartnersType[]>([]);
+
+  const openPartnerLink = (url: string) => {
+    window.open(url, '_blank');
+  }
+
+  useEffect(() => {
+    (async () => {
+      const partnersRes = await getPartners();
+      setPartners(partnersRes);
+    })()
+  }, []);
     return (
         <section className={`${styles.container}`}>
-            <h2 className={`${styles.title} ${styles.titleUnderline}`}>Наши партнёры</h2>
+            <h2 className={`${styles.title} ${styles.titleUnderline}`}>
+              {t('pages.home.ourPartners')}
+            </h2>
 
 
             <Carousel opts={{
@@ -20,10 +45,10 @@ const Partners = () => {
                 ]}
             >
                 <CarouselContent className="-ml-4">
-                    {Array.from({ length: 5 }).map((_, index) => (
-                        <CarouselItem key={index} className="basis-1/2">
-                            <div className={styles.partnerImg}>
-                                <img src={partnerImg} alt="partner logo" />
+                    {partners?.map((partner) => (
+                        <CarouselItem key={partner.id} className="basis-1/2 cursor-pointer">
+                            <div onClick={()=>openPartnerLink(partner.url)} className={styles.partnerImg}>
+                                <img src={getStaticImage(partner.logo)} alt={partner.company} />
                             </div>
                         </CarouselItem>
                     ))}

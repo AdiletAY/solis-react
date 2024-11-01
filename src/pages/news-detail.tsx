@@ -2,36 +2,77 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 import "@/styles/news.detail.css";
 
-import { useParams } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
+import {useEffect, useState} from "react";
+import getNewsById from "@/shared/api/requests/get.news.byID.ts";
+import {useTranslation} from "react-i18next";
+import PageLoader from "@/components/ui/page-loader.tsx";
+import {getStaticImage} from "@/lib/helpers/get-static-img.ts";
+import {Button} from "@/components/ui/button.tsx";
+
+type NewsType = {
+  id: number;
+  photo: string;
+  title_kk: string;
+  title_ru: string;
+  title_en: string;
+  description_kk: string;
+  description_ru: string;
+  description_en: string;
+  date_created: string;
+}
 
 const NewsDetailPage = () => {
+  const navigate = useNavigate();
     const { newsId } = useParams();
-    console.log(newsId);
+    const {i18n} = useTranslation();
+    const [news, setNews] = useState<NewsType | null>(null);
 
-    // Request to server
+    useEffect(() => {
+        (async () => {
+          const newsRes = await getNewsById(newsId);
+            setNews(newsRes);
+        })()
+    }, []);
+
+    if (!news) return <PageLoader/>
     return (
         <>
             <Header />
+
+          <div className='my-5 flex justify-center items-center'>
+            <Button onClick={()=>navigate(-1)}>
+              Назад
+            </Button>
+          </div>
             <main className="news-detail__main">
-                <section className="news-detail__section">
-                    <h1 className="news-detail__title">1980s Action Movies That Forever Changed The Genre</h1>
-                    <div className="news-detail__title-divider"></div>
-                    <p className="news-detail__intro">
-                        A recent Scout study carried out by Mediahub found that young people love to re-watch action movies from the
-                        past. With that in mind, we’re taking a look at some of the best movies from the decade that put the genre on
-                        the map: the 1980s. The following are therefore films that hit big at the time and continue to influence
-                        writers, actors, and directors to this day.
-                    </p>
-                    <article className="news-detail__article">
-                        <img
-                            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/614007/img_placeholder_1034x432.png"
-                            alt="Raiders of the Lost Ark"
-                            className="news-detail__image"
-                        />
-                    </article>
-                </section>
+              <section className="news-detail__section">
+                <h1 className="news-detail__title w-full">
+                  {// @ts-ignore
+                    news[`title_${i18n.language}`]
+                  }
+                </h1>
+                <div className="news-detail__title-divider"/>
+                <div className='w-full'/>
+                <p
+                    className="news-detail__intro"
+                    dangerouslySetInnerHTML={{// @ts-ignore
+                      __html: news[`description_${i18n.language}`]
+                    }}
+                />
+                <div className='w-full'/>
+                <article className="news-detail__article">
+                  <img
+                      src={getStaticImage(news.photo)}
+                      alt={// @ts-ignore
+                        news[`title_${i18n.language}`]
+                      }
+                      className="news-detail__image"
+                  />
+                </article>
+              </section>
             </main>
-            <Footer />
+          <Footer />
         </>
     );
 };

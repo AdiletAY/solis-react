@@ -1,5 +1,67 @@
 {
-    "Astana": "Astana",
-    "Almaty": "Almaty",
-    "Leave a request": "Leave a request"
+    "header": {
+        "leaveRequest": "Leave a request"
+    },
+    "navigation": {
+        "aboutUs": "About us",
+        "team": "Team",
+        "news": "News",
+        "services": "Services",
+        "testimonials": "Testimonials"
+    },
+    "hero": {
+        "subtitle": "Advanced solutions",
+        "getApplication": "Get a commercial offer"
+    },
+    "pages": {
+        "home": {
+            "cases": "Cases",
+            "services": "Services",
+            "team": "Our team",
+            "news": "News",
+            "allNews": "All news",
+            "advantages": "Advantages",
+            "feedback": "Testimonials",
+            "ourPartners": "Our partners"
+        }
+    },
+    "forms": {
+        "application": {
+            "title": "Get it now",
+            "subtitle": "Commercial offer",
+            "fullName": "First name Last name",
+            "phone": "Mobile phone",
+            "email": "Email",
+            "term": "By clicking the \"Get\" button, you consent to the collection and processing of data.",
+            "button": "Get"
+        }
+    },
+    "footer": {
+        "navigation": {
+            "title": "Navigation",
+            "aboutUs": "About us",
+            "team": "Team",
+            "news": "News",
+            "services": "Services",
+            "testimonials": "Testimonials"
+        },
+        "documents": {
+            "title": "Documents",
+            "documents_templates": "Document templates",
+            "notice": "Disclaimer"
+        },
+        "contacts": {
+            "title": "Contacts"
+        },
+        "allRights": "All rights reserved or will be reserved"
+    },
+    "common": {
+        "back_button": "Back",
+        "toasts": {
+            "success": "Success",
+            "error": "Error",
+            "application_send_success": "Application sent!",
+            "application_send_error": "An error occurred! Application not sent!"
+        }
+    }
 }

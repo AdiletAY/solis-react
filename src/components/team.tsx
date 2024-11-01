@@ -2,61 +2,94 @@ import styles from '@/styles/styles.module.css';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { useTranslation } from 'react-i18next';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel';
+import {useEffect, useState} from "react";
+import getTeam from "@/shared/api/requests/get-team.ts";
+import {getStaticImage} from "@/lib/helpers/get-static-img.ts";
 
-import teamateImg from "@/assets/images/teammate-img.png"
+type TeamType = {
+  id: number,
+  cityName_en: string,
+  cityName_kk: string,
+  cityName_ru: string,
+  team: {
+    id: 1,
+    fullName_en: string
+    fullName_ru: string
+    fullName_kk: string
+    position_en: string
+    position_ru: string
+    position_kk: string
+    avatar: string
+  }[]
+}
+
+
 
 const Team = () => {
-    const { t } = useTranslation();
+    const {  t, i18n } = useTranslation();
+    const [team, setTeam] = useState<TeamType[]>([]);
+    useEffect(() => {
+        (async () => {
+          const teamRes = await getTeam();
+            setTeam(teamRes)
+        })()
+    }, []);
 
     return (
         <section className={`${styles.teamBlock} ${styles.container}`} id="team">
-            <h2 className={`${styles.title} ${styles.titleUnderline}`}>Наша команда</h2>
+            <h2 className={`${styles.title} ${styles.titleUnderline}`}>{t('pages.home.team')}</h2>
 
-            <Tabs defaultValue="astana" className="w-full flex flex-col justify-center">
+            <Tabs defaultValue={team[0]?.cityName_en || 'Astana'} className="w-full flex flex-col justify-center">
                 <TabsList className="grid w-1/3 h-auto grid-cols-2 m-auto rounded">
-                    <TabsTrigger className='rounded p-3 text-base uppercase font-semibold' value="astana">{t('Astana')}</TabsTrigger>
-                    <TabsTrigger className='rounded p-3 text-base uppercase font-semibold' value="almaty">{t('Almaty')}</TabsTrigger>
+                  {team?.map((item) => (
+                    <TabsTrigger key={item.id} className='rounded p-3 text-base uppercase font-semibold' value={item?.cityName_en}>
+                      {//@ts-ignore
+                        item[`cityName_${i18n.language}`]
+                      }
+                    </TabsTrigger>
+                  ))}
                 </TabsList>
-                <TabsContent value="astana">
-                    <Carousel className="w-9/12 m-auto">
+              {
+                team?.map((branch) => (
+                    <TabsContent key={branch.id} value={branch.cityName_en}>
+                      <Carousel className="w-9/12 m-auto">
                         <CarouselContent>
-                            {Array.from({ length: 5 }).map((_, index) => (
-                                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                                    <div>
-                                        <img src={teamateImg} alt="photo" />
+                          {branch?.team?.map((member) => (
+                              <CarouselItem key={member.id} className="md:basis-1/2 lg:basis-1/3">
+                                <div>
+                                  <img
+                                    src={getStaticImage(member.avatar)}
+                                    alt={
+                                    //@ts-ignore
+                                      member[`position_${i18n.language}`]
+                                        + " " +
+                                    //@ts-ignore
+                                      member[`fullName_${i18n.language}`]
+                                    }
+                                  />
 
-                                        <div className={styles.teammateInfo}>
-                                            <h4 className={styles.teammateName}>Чингис Оралбаев</h4>
-                                            <h5 className={styles.teammatePosition}>Старший Юрист</h5>
-                                        </div>
-                                    </div>
-                                </CarouselItem>
-                            ))}
+                                  <div className={styles.teammateInfo}>
+                                    <h4 className={styles.teammateName}>
+                                      {//@ts-ignore
+                                        member[`fullName_${i18n.language}`]
+                                      }
+                                    </h4>
+                                    <h5 className={styles.teammatePosition}>
+                                      {//@ts-ignore
+                                        member[`position_${i18n.language}`]
+                                      }
+                                    </h5>
+                                  </div>
+                                </div>
+                              </CarouselItem>
+                          ))}
                         </CarouselContent>
                         <CarouselPrevious />
                         <CarouselNext />
-                    </Carousel>
-                </TabsContent>
-                <TabsContent value="almaty">
-                    <Carousel className="w-9/12 m-auto">
-                        <CarouselContent>
-                            {Array.from({ length: 5 }).map((_, index) => (
-                                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                                    <div>
-                                        <img src={teamateImg} alt="photo" />
-
-                                        <div className={styles.teammateInfo}>
-                                            <h4 className={styles.teammateName}>Чингис Оралбаев Almaty</h4>
-                                            <h5 className={styles.teammatePosition}>Старший Юрист</h5>
-                                        </div>
-                                    </div>
-                                </CarouselItem>
-                            ))}
-                        </CarouselContent>
-                        <CarouselPrevious />
-                        <CarouselNext />
-                    </Carousel>
-                </TabsContent>
+                      </Carousel>
+                    </TabsContent>
+                ))
+              }
             </Tabs>
         </section >
     )

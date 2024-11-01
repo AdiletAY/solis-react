@@ -1,31 +1,49 @@
 import styles from '@/styles/styles.module.css';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel';
+import {useEffect, useState} from "react";
+import getFeedbacks from "@/shared/api/requests/get-feedbacks.ts";
+import {getStaticImage} from "@/lib/helpers/get-static-img.ts";
+import {useTranslation} from "react-i18next";
 
-import feedbackImg from "@/assets/images/feedback-avatar1.png";
+type FeedbackType = {
+  id: number;
+  fullName: string;
+  avatar: string;
+  feedback: string;
+}
 
 const Feedback = () => {
+  const {t} = useTranslation();
+  const [feedbacks, setFeedbacks] = useState<FeedbackType[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      const feedbacksRes = await getFeedbacks();
+      setFeedbacks(feedbacksRes);
+    })()
+  }, []);
     return (
         <section className={styles.container} id="feedback">
-            <h2 className={`${styles.title} ${styles.titleUnderline}`}>Отзывы</h2>
+            <h2 className={`${styles.title} ${styles.titleUnderline}`}>
+              {t('pages.home.feedback')}
+            </h2>
 
 
             <Carousel className="w-full">
                 <CarouselContent>
-                    {Array.from({ length: 5 }).map((_, index) => (
-                        <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                    {feedbacks?.map((feedback) => (
+                        <CarouselItem key={feedback.id} className="md:basis-1/2 lg:basis-1/3">
                             <div className={styles.feedback}>
                                 <div className={styles.feedbackText}>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et
-                                    optio explicabo doloribus nulla aliquid autem sunt eligendi!
-                                    Accusamus, molestiae officiis!
+                                  {feedback.feedback}
                                 </div>
 
                                 <div className={styles.feedbackPerson}>
                                     <div className={styles.personImg}>
-                                        <img src={feedbackImg} alt="feedbackImg" />
+                                        <img src={getStaticImage(feedback.avatar)} alt={feedback.feedback} />
                                     </div>
 
-                                    <p className={styles.personName}>Johnny Doe</p>
+                                    <p className={styles.personName}>{feedback.fullName}</p>
                                 </div>
                             </div>
                         </CarouselItem>

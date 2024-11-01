@@ -2,25 +2,46 @@ import { useTranslation } from "react-i18next";
 import LanguageSelector from "./ui/language-selector.tsx";
 
 import styles from '@/styles/styles.module.css';
+import {useEffect, useState} from "react";
+import {getBranches} from "@/shared/api/requests/get-branches.ts";
+
+type BrancheType ={
+    id: number | string;
+    phone: string;
+    city_kk: string;
+    city_ru: string;
+    city_en: string;
+}
 
 const Header = () => {
+    const { t, i18n } = useTranslation();
+    const [branches, setBranches] = useState<BrancheType[]>([])
 
-    const { t } = useTranslation();
+    useEffect(()=>{
+        (async ()=>{
+        const branchesRes = await getBranches();
+        setBranches(branchesRes);
+        })();
+    },[])
     return (
         <header className={styles.header}>
             <div className={styles.contactsBlock}>
                 <div className={`${styles.contacts} ${styles.container}`}>
-                    <div className={styles.PhoneBlock}>
-                        <span>{t('Astana')}</span>
-                        <a className={styles.phoneNumber} href="tel:+77084253033"> +7 (708) 425-30-33</a>
-                    </div>
-                    <div className={styles.PhoneBlock}>
-                        <span>{t('Almaty')}</span>
-                        <a className={styles.phoneNumber} href="tel:+77084253033"> +7 (708) 425-30-33</a>
-                    </div>
+                    {
+                        branches?.map((branch)=> (
+                            <div key={branch?.id} className={styles.phoneBlock}>
+                                <span>
+                                    {//@ts-ignore
+                                        branch[`city_${i18n.language}`]
+                                    }
+                                </span>
+                                <a className={styles.phoneNumber} href={`tel:${branch?.phone}`}>{branch?.phone}</a>
+                            </div>
+                        ))
+                    }
 
                     <a className={`${styles.button} ${styles.headerApplicationButton}`} href="#application">
-                        {t('Leave a request')}
+                        {t('header.leaveRequest')}
                     </a>
 
                     <LanguageSelector />

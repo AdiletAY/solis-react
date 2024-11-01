@@ -1,79 +1,140 @@
 import footerBackground from "../assets/images/footer-bg.jpg";
 
 import styles from '@/styles/styles.module.css';
-import logo from "../assets/images/logo.svg";
+import {useEffect, useState} from "react";
+import getPageParams from "@/shared/api/requests/get-page-params.ts";
+import i18n from "i18next";
+import getAddress from "@/shared/api/requests/get-address.ts";
+import {Link} from "react-router-dom";
+import {useTranslation} from "react-i18next";
+import Logotype from "@/components/ui/logotype.tsx";
+
+
+type FooterParams = {
+  footer_title_en: string
+  footer_title_ru: string
+  footer_title_kk: string
+  footer_description_en: string
+  footer_description_ru: string
+  footer_description_kk: string
+  footer_phone: string
+  footer_email: string
+} | null
+
+type AddressType = {
+    address: string;
+    branch: number;
+    id: number;
+    link: string;
+}
+
+
 
 const Footer = () => {
+    const {t} = useTranslation();
+    const [footerParams, setFooterParams] = useState<FooterParams>(null);
+    const [addresses, setAddresses] = useState<AddressType[]>([]);
+
+    useEffect(() => {
+        (async () => {
+          const footerRes = await getPageParams();
+          setFooterParams(footerRes)
+        })();
+
+        (async () => {
+            const addressesRes = await getAddress();
+            setAddresses(addressesRes)
+        })();
+    }, []);
+
+    if (!footerParams) return null
+
     return (
         <div style={{ background: `no-repeat center/cover url(${footerBackground})` }}>
             <footer className={`${styles.footer} ${styles.container}`}>
                 <div className={styles.footerTop}>
                     <div className={styles.footerLeft}>
                         <a className={styles.footerLogo} href="#">
-                            <img src={logo} alt="company logo" />
+                            <Logotype/>
                         </a>
 
                         <h3>
-                            SOLIS Law Firm <br />
-                            это надежный партнер по юридическим вопросам
+                            {//@ts-ignore
+                                footerParams[`footer_title_${i18n.language}`]
+                            }
+                            <br />
+                            {//@ts-ignore
+                                footerParams[`footer_description_${i18n.language}`]
+                            }
                         </h3>
                     </div>
 
                     <div className={styles.footerRight}>
                         <div >
-                            <h4 className={styles.footerTitle}>Навигация</h4>
+                            <h4 className={styles.footerTitle}>
+                                {t('footer.navigation.title')}
+                            </h4>
 
                             <ul>
                                 <li>
-                                    <a href="#advatages">О нас</a>
+                                    <Link to="/#advatages">
+                                        {t('footer.navigation.aboutUs')}
+                                    </Link>
                                 </li>
                                 <li >
-                                    <a href="#team">Команда</a>
+                                    <Link to="/#team">
+                                        {t('footer.navigation.team')}
+                                    </Link>
                                 </li>
                                 <li >
-                                    <a href="#news">Новости</a>
+                                    <Link to="/#news">
+                                        {t('footer.navigation.news')}
+                                    </Link>
                                 </li>
                                 <li >
-                                    <a href="#services">Услуги</a>
+                                    <Link to="/#services">
+                                        {t('footer.navigation.services')}
+                                    </Link>
                                 </li>
                                 <li >
-                                    <a href="#feedback">Отзывы</a>
+                                    <Link to="/#feedback">
+                                        {t('footer.navigation.testimonials')}
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
 
                         <div className={styles.footerDocs}>
-                            <h4 className={styles.footerTitle}>Документы</h4>
+                            <h4 className={styles.footerTitle}>
+                                {t('footer.documents.title')}
+                            </h4>
 
                             <ul className={styles.footerList}>
-                                <li><a href="#">Шаблоны документов</a></li>
+                                <li><a href="#">{t('footer.documents.documents_templates')}</a></li>
                                 <li>
-                                    <a href="#">Заявление об ограничении ответственности</a>
+                                    <a href="#">{t('footer.documents.notice')}</a>
                                 </li>
                             </ul>
                         </div>
 
                         <div >
-                            <h4 className={styles.footerTitle}>Контакты</h4>
+                            <h4 className={styles.footerTitle}>{t('footer.contacts.title')}</h4>
 
                             <ul className={styles.footerList}>
                                 <li>
-                                    <a href="tel:+77771548288">+7(777)154-82-88</a>
+                                    <a href={`tel:${footerParams?.footer_phone}`}>{footerParams?.footer_phone}</a>
                                 </li>
                                 <li>
-                                    <a href="mailto:info@solislaw.com">info@solislaw.com</a>
+                                    <a href={`mailto:${footerParams?.footer_email}`}>{footerParams?.footer_email}</a>
                                 </li>
                                 <li>
-                                    <div>
-                                        <a href="https://go.2gis.com/4ziq9" target="_blank">
-                                            01000, г. Астана, ул. Туран 18, офис 23
-                                        </a>
-                                    </div>
-                                    <div>
-                                        <a href="https://go.2gis.com/4ziq9" target="_blank">
-                                            01000, г. Алматы, ул. Туран 18, офис 23
-                                        </a>
-                                    </div>
+                                    {addresses?.map((address) => (
+                                        <div key={address.id}>
+                                            <Link to={address.link} target="_blank">
+                                                {address.address}
+                                            </Link>
+                                        </div>
+                                    ))}
                                 </li>
                             </ul>
                         </div>
@@ -81,8 +142,12 @@ const Footer = () => {
                 </div>
 
                 <div className={styles.underfooter}>
-                    <span className={styles.textUnderline}>SOLIS Law Firm</span> © 2024. <br />
-                    Все права защищены либо будут защищены
+                    <span className={styles.textUnderline}>
+                        {//@ts-ignore
+                            footerParams[`footer_title_${i18n.language}`]
+                        }
+                    </span> &copy; {new Date().getFullYear()}. <br />
+                    {t('footer.allRights')}
                 </div>
             </footer >
         </div >
