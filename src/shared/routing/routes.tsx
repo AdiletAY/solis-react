@@ -19,5 +19,9 @@ export const ROUTES: RouteType[] = [
         path: PATHS.NEWS,
         element: <NewsListPage />
     },
+    {
+        path: PATHS.NEWS_DETAILS,
+        element: <NewsDetailPage />
+    },
 ];
 

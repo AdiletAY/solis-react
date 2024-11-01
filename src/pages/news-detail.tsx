@@ -2,7 +2,11 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 import "@/styles/news.detail.css";
 
+import { useParams } from "react-router-dom";
+
 const NewsDetailPage = () => {
+    const { newsId } = useParams();
+    console.log(newsId);
 
     // Request to server
     return (
