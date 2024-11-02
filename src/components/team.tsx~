@@ -40,7 +40,7 @@ const Team = () => {
             <h2 className={`${styles.title} ${styles.titleUnderline}`}>{t('pages.home.team')}</h2>
 
             <Tabs defaultValue={team[0]?.cityName_en || 'Astana'} className="w-full flex flex-col justify-center">
-                <TabsList className="grid w-full md:w-1/3 h-auto grid-cols-2 m-auto rounded">
+                <TabsList className="grid sm:w-full md:w-1/3 h-auto grid-cols-2 m-auto rounded">
                   {team?.map((item) => (
                     <TabsTrigger key={item.id} className='rounded p-3 text-base uppercase font-semibold' value={item?.cityName_en}>
                       {//@ts-ignore
