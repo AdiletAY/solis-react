@@ -11,7 +11,7 @@ import {getStaticImage} from "@/lib/helpers/get-static-img.ts";
 
 const NewsListPage = () => {
     const navigate = useNavigate();
-    const {i18n} = useTranslation();
+    const {t, i18n} = useTranslation();
     const [news, setNews] = useState<NewsType[]>([]);
 
     useEffect(() => {
@@ -25,12 +25,14 @@ const NewsListPage = () => {
             <Header/>
             <div className='my-5 flex justify-center items-center'>
                 <Button onClick={() => navigate(-1)}>
-                    Назад
+                  {t('common.back_button')}
                 </Button>
             </div>
             <main className="news-list__main">
                 <section className="news-list__section">
-                    <h1 className="news-list__title">News</h1>
+                    <h1 className="news-list__title">
+                      {t('pages.home.news')}
+                    </h1>
                     <div className="news-list__items">
                         {news?.map((news) => (
                             <article key={news.id} className="news-list__item">

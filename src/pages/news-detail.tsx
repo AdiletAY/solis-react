@@ -25,7 +25,7 @@ type NewsType = {
 const NewsDetailPage = () => {
   const navigate = useNavigate();
     const { newsId } = useParams();
-    const {i18n} = useTranslation();
+    const {t, i18n} = useTranslation();
     const [news, setNews] = useState<NewsType | null>(null);
 
     useEffect(() => {
@@ -42,7 +42,7 @@ const NewsDetailPage = () => {
 
           <div className='my-5 flex justify-center items-center'>
             <Button onClick={()=>navigate(-1)}>
-              Назад
+              {t('common.back_button')}
             </Button>
           </div>
             <main className="news-detail__main">

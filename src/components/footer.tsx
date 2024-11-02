@@ -77,27 +77,27 @@ const Footer = () => {
 
                             <ul>
                                 <li>
-                                    <Link to="/#advatages">
+                                    <Link target='_top' to="/#advatages">
                                         {t('footer.navigation.aboutUs')}
                                     </Link>
                                 </li>
                                 <li >
-                                    <Link to="/#team">
+                                    <Link target='_top' to="/#team">
                                         {t('footer.navigation.team')}
                                     </Link>
                                 </li>
                                 <li >
-                                    <Link to="/#news">
+                                    <Link target='_top' to="/#news">
                                         {t('footer.navigation.news')}
                                     </Link>
                                 </li>
                                 <li >
-                                    <Link to="/#services">
+                                    <Link target='_top' to="/#services">
                                         {t('footer.navigation.services')}
                                     </Link>
                                 </li>
                                 <li >
-                                    <Link to="/#feedback">
+                                    <Link target='_top' to="/#feedback">
                                         {t('footer.navigation.testimonials')}
                                     </Link>
                                 </li>

@@ -750,6 +750,7 @@
           pointer-events: none;
           opacity: 0;
           transition: opacity .33s ease-in-out;
+          overflow-y: auto;
       }
 
       .burgerClose {
@@ -793,7 +794,7 @@
       }
 
       .mainTitle {
-          font-size: 50px;
+          font-size: 22px;
       }
 
       .subtitle {
@@ -831,7 +832,7 @@
   }
 
   @media (max-width: 375px) {
-      .headerLogo {
-          max-width: 280px;
+      .headerLogo svg {
+          width: 220px;
       }
   }

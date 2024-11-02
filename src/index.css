@@ -11,3 +11,8 @@
     --red-color: #9d0000;
     --font-family: "Montserrat", sans-serif;
 }
+
+html, body{
+    overflow-x: hidden;
+    -ms-overflow-x: hidden;
+}

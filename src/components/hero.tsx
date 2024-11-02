@@ -3,6 +3,7 @@ import mainBackground from '../assets/images/main-background.jpg';
 import {useState} from "react";
 import {useTranslation} from "react-i18next";
 import Logotype from "@/components/ui/logotype.tsx";
+import {Link} from "react-router-dom";
 
 const Hero = () => {
     const {t} = useTranslation();
@@ -23,11 +24,11 @@ const Hero = () => {
                 <nav>
                     <ul className={`${styles.navList} ${isMenuOpen && styles.opened}`}>
                         <div onClick={toggleMenu} className={styles.burgerClose}>&#9932;</div>
-                        <li><a className={styles.navLink} href="#advatages">{t('navigation.aboutUs')}</a></li>
-                        <li><a className={styles.navLink} href="#team">{t('navigation.team')}</a></li>
-                        <li><a className={styles.navLink} href="#news">{t('navigation.news')}</a></li>
-                        <li><a className={styles.navLink} href="#services">{t('navigation.services')}</a></li>
-                        <li><a className={styles.navLink} href="#feedback">{t('navigation.testimonials')}</a></li>
+                        <li><Link className={styles.navLink} onClick={toggleMenu} target='_top' to="#advatages">{t('navigation.aboutUs')}</Link></li>
+                        <li><Link className={styles.navLink} onClick={toggleMenu} target='_top' to="#team">{t('navigation.team')}</Link></li>
+                        <li><Link className={styles.navLink} onClick={toggleMenu} target='_top' to="#news">{t('navigation.news')}</Link></li>
+                        <li><Link className={styles.navLink} onClick={toggleMenu} target='_top' to="#services">{t('navigation.services')}</Link></li>
+                        <li><Link className={styles.navLink} onClick={toggleMenu} target='_top' to="#feedback">{t('navigation.testimonials')}</Link></li>
                     </ul>
                 </nav>
                 <div onClick={toggleMenu} className={styles.burgerBtn}>

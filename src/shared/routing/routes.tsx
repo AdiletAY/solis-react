@@ -3,8 +3,11 @@ import { RouteType } from '../types/routes.type';
 import { PATHS } from '../constants/paths';
 
 const HomePage = lazy(() => import('@/pages/home.tsx')),
+    ServicesListPage = lazy(() => import('@/pages/services-list.tsx')),
     NewsListPage = lazy(() => import('@/pages/news-list.tsx')),
-    NewsDetailPage = lazy(() => import("@/pages/news-detail.tsx"));
+    NewsDetailPage = lazy(() => import("@/pages/news-detail.tsx")),
+    CasesListPage = lazy(() => import("@/pages/cases-list.tsx")),
+    CaseDetailPage = lazy(() => import("@/pages/case-detail.tsx"));
 
 export const ROUTES: RouteType[] = [
     {
@@ -16,12 +19,24 @@ export const ROUTES: RouteType[] = [
         element: <HomePage />
     },
     {
+        path: PATHS.SERVICES,
+        element: <ServicesListPage />
+    },
+    {
         path: PATHS.NEWS,
         element: <NewsListPage />
     },
     {
         path: PATHS.NEWS_DETAILS,
         element: <NewsDetailPage />
+    },
+    {
+        path: PATHS.CASES,
+        element: <CasesListPage />
+    },
+    {
+        path: PATHS.CASES_DETAILS,
+        element: <CaseDetailPage />
     },
 ];
 

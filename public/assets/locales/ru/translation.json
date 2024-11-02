@@ -16,7 +16,9 @@
     "pages": {
       "home": {
         "cases": "Кейсы",
+        "allCases": "Все кейсы",
         "services": "Услуги",
+        "allServices": "Все услуги",
         "team": "Наша команда",
         "news": "Новости",
         "allNews": "Все новости",

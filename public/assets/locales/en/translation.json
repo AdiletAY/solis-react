@@ -16,7 +16,9 @@
     "pages": {
         "home": {
             "cases": "Cases",
+            "allCases": "All cases",
             "services": "Services",
+            "allServices": "All services",
             "team": "Our team",
             "news": "News",
             "allNews": "All news",
