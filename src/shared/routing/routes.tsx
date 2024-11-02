@@ -4,6 +4,7 @@ import { PATHS } from '../constants/paths';
 
 const HomePage = lazy(() => import('@/pages/home.tsx')),
     ServicesListPage = lazy(() => import('@/pages/services-list.tsx')),
+    ServiceDetailPage = lazy(() => import('@/pages/service-detail.tsx')),
     NewsListPage = lazy(() => import('@/pages/news-list.tsx')),
     NewsDetailPage = lazy(() => import("@/pages/news-detail.tsx")),
     CasesListPage = lazy(() => import("@/pages/cases-list.tsx")),
@@ -21,6 +22,10 @@ export const ROUTES: RouteType[] = [
     {
         path: PATHS.SERVICES,
         element: <ServicesListPage />
+    },
+    {
+        path: PATHS.SERVICES_DETAILS,
+        element: <ServiceDetailPage />
     },
     {
         path: PATHS.NEWS,
