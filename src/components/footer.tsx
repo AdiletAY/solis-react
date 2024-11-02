@@ -110,10 +110,10 @@ const Footer = () => {
                             </h4>
 
                             <ul className={styles.footerList}>
-                                <li><a href="#">{t('footer.documents.documents_templates')}</a></li>
-                                <li>
-                                    <a href="#">{t('footer.documents.notice')}</a>
-                                </li>
+                                <li><Link to="/documents/documents-templates">{t('footer.documents.documents_templates')}</Link></li>
+                                {/*<li>*/}
+                                {/*    <Link to="/documents/notice">{t('footer.documents.notice')}</Link>*/}
+                                {/*</li>*/}
                             </ul>
                         </div>
 

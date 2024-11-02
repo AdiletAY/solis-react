@@ -1,5 +1,6 @@
 export const PATHS = {
     HOME: '/',
+    DOCUMENTS_LIST: '/documents/:slug',
     SERVICES: '/services',
     SERVICES_DETAILS: '/services/:serviceId',
     NEWS: '/news',

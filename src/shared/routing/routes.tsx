@@ -3,6 +3,7 @@ import { RouteType } from '../types/routes.type';
 import { PATHS } from '../constants/paths';
 
 const HomePage = lazy(() => import('@/pages/home.tsx')),
+    DocumentsListPage = lazy(() => import('@/pages/documents-list.tsx')),
     ServicesListPage = lazy(() => import('@/pages/services-list.tsx')),
     ServiceDetailPage = lazy(() => import('@/pages/service-detail.tsx')),
     NewsListPage = lazy(() => import('@/pages/news-list.tsx')),
@@ -18,6 +19,14 @@ export const ROUTES: RouteType[] = [
     {
         path: PATHS.HOME,
         element: <HomePage />
+    },
+    {
+        path: PATHS.DOCUMENTS_LIST,
+        element: <DocumentsListPage />
+    },
+    {
+        path: PATHS.SERVICES,
+        element: <ServicesListPage />
     },
     {
         path: PATHS.SERVICES,
