@@ -535,19 +535,23 @@
   .partners-list {
       margin-top: 40px;
       display: flex;
+      align-items: center;
       gap: 20px;
   }
 
   .partnerImg {
-      margin: auto;
+    width: 100%;
+    height: 100%;
   }
 
-  .partnerImg img {
+  .partnerLogo {
       display: block;
       max-width: 100%;
       height: 100%;
+    aspect-ratio: 1;
       object-fit: contain;
       object-position: center;
+      margin: auto;
   }
 
   .applicationBlockFull {

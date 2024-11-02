@@ -46,9 +46,9 @@ const Partners = () => {
             >
                 <CarouselContent className="-ml-4">
                     {partners?.map((partner) => (
-                        <CarouselItem key={partner.id} className="basis-1/2 cursor-pointer">
+                        <CarouselItem key={partner.id} className="basis-1/2 items-center aspect-square cursor-pointer">
                             <div onClick={()=>openPartnerLink(partner.url)} className={styles.partnerImg}>
-                                <img src={getStaticImage(partner.logo)} alt={partner.company} />
+                                <img className={styles.partnerLogo} src={getStaticImage(partner.logo)} alt={partner.company} />
                             </div>
                         </CarouselItem>
                     ))}
