@@ -32,7 +32,7 @@ const Cases = () => {
             <CarouselContent>
               {cases?.map((caseItem) => (
                   <CarouselItem key={caseItem.id} className="md:basis-1/2 lg:basis-1/3">
-                    <div className="p-1">
+                    <div className="p-1 h-full">
                       <div className={styles.caseCard}>
                         <Link to={`/cases/${caseItem.id}`} className={styles.caseCardLink}/>
                         <div className={styles.caseInfo}>

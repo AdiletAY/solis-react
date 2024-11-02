@@ -209,6 +209,7 @@
       display: grid;
       grid-auto-flow: column;
       place-content: center;
+      height: 100%;
   }
 
   .imageCard {
@@ -290,6 +291,7 @@
   .caseCard {
       position: relative;
       max-width: 480px;
+      height: 100%;
       /* padding: 36px 20px 50px; */
       display: flex;
       justify-content: space-between;
@@ -771,6 +773,10 @@
       .navList a {
           font-size: 32px;
       }
+
+    .imageCard .imageCaption {
+      --clipInset: 0%;
+    }
   }
 
   @media (max-width: 640px) {

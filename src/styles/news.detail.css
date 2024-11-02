@@ -81,7 +81,7 @@
     }
 
     .news-detail__title {
-        font-size: 53.1px;
+        font-size: 42px;
         line-height: 0.98;
         letter-spacing: 1.1px;
         margin-bottom: 20px;
@@ -89,7 +89,7 @@
 
     .news-detail__title-divider {
         width: 339px;
-        height: 24px;
+        height: 18px;
         margin-bottom: 53px;
     }
 
@@ -108,7 +108,7 @@
     }
 
     .news-detail__title {
-        font-size: 66.4px;
+        font-size: 48px;
         line-height: 0.95;
         letter-spacing: 1.4px;
         margin-bottom: 30px;
@@ -130,7 +130,7 @@
     }
 
     .news-detail__title {
-        font-size: 72px;
+        font-size: 52px;
         line-height: 0.98;
     }
 
