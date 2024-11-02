@@ -7,7 +7,7 @@ const Logotype = ({className}: {className?: string}) => {
 	return (
 			<span className={cn(className, 'relative')}>
 				<p className='text-white absolute bottom-0 left-[17%]'>
-					{t('hero.subtitle')}
+					{t('hero.subtitle2')}
 				</p>
 				<svg width="307" height="82" viewBox="0 0 307 82" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path
