@@ -1,0 +1,20 @@
+.animate-logo-loader{
+  opacity: 0;
+  animation: upScale 15s ease-in-out infinite;
+}
+
+@keyframes upScale {
+  5%{
+    opacity: 1;
+  }
+  50%{
+    transform: scale(2);
+  }
+  95%{
+    opacity: 1;
+  }
+  100%{
+    transform: scale(1);
+    opacity: 0;
+  }
+}
