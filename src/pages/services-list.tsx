@@ -50,7 +50,7 @@ const ServicesList = () => {
 													service[`name_${i18n.language}`]
 												}
 											</h2>
-											<Link to={`/news/${service.id}`} className="news-list__link">Смотреть</Link>
+											<Link to={`/services/${service.id}`} className="news-list__link">Смотреть</Link>
 										</div>
 									</article>
 							))}
