@@ -433,6 +433,11 @@
       gap: 40px;
   }
 
+  .teammateImg{
+      width: 100%;
+    aspect-ratio: 11/16;
+    object-fit: cover;
+  }
   .teammateInfo {
       margin-top: 16px;
       padding: 0 0 10px 10px;

@@ -58,6 +58,7 @@ const Team = () => {
                               <CarouselItem key={member.id} className="md:basis-1/2 lg:basis-1/3">
                                 <div>
                                   <img
+                                      className={styles.teammateImg}
                                     src={getStaticImage(member.avatar)}
                                     alt={
                                     //@ts-ignore
