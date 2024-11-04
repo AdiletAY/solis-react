@@ -16,3 +16,50 @@ html, body{
     overflow-x: hidden;
     -ms-overflow-x: hidden;
 }
+
+.news-detail__intro b,
+.news-detail__intro strong {
+    @apply font-semibold;
+}
+
+.news-detail__intro u {
+    @apply underline;
+}
+
+.news-detail__intro i {
+    @apply italic;
+}
+
+.news-detail__intro ul,
+.news-detail__intro ul li {
+    @apply list-disc pl-5;
+}
+
+.news-detail__intro ol,
+.news-detail__intro ol li {
+    @apply list-decimal pl-5;
+}
+
+.news-detail__intro h1 {
+    @apply text-4xl font-bold mb-4;
+}
+
+.news-detail__intro h2 {
+    @apply text-3xl font-bold mb-3;
+}
+
+.news-detail__intro h3 {
+    @apply text-2xl font-semibold mb-3;
+}
+
+.news-detail__intro h4 {
+    @apply text-xl font-semibold mb-2;
+}
+
+.news-detail__intro h5 {
+    @apply text-lg font-medium mb-2;
+}
+
+.news-detail__intro h6 {
+    @apply text-base font-medium mb-2;
+}
