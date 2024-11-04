@@ -47,7 +47,7 @@ const Partners = () => {
                     }),
                 ]}
             >
-                <CarouselContent className="-ml-4">
+                <CarouselContent className="-ml-4 max-h-36">
                     {partners?.map((partner) => (
                         <CarouselItem key={partner.id} className="basis-1/2 items-center aspect-square cursor-pointer">
                             <div onClick={()=>openPartnerLink(partner.url)} className={styles.partnerImg}>
