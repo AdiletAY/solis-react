@@ -4,11 +4,13 @@ import {useEffect, useState} from "react";
 import getFeedbacks from "@/shared/api/requests/get-feedbacks.ts";
 import {getStaticImage} from "@/lib/helpers/get-static-img.ts";
 import {useTranslation} from "react-i18next";
+import VideoCirclePlayer from "@/components/ui/video-circle-player.tsx";
 
 type FeedbackType = {
   id: number;
   fullName: string;
   avatar: string;
+  video: string;
   feedback: string;
 }
 
@@ -34,16 +36,20 @@ const Feedback = () => {
                     {feedbacks?.map((feedback) => (
                         <CarouselItem key={feedback.id} className="md:basis-1/2 lg:basis-1/3">
                             <div className={styles.feedback}>
-                                <div className={styles.feedbackText}>
-                                  {feedback.feedback}
-                                </div>
-
                                 <div className={styles.feedbackPerson}>
-                                    <div className={styles.personImg}>
-                                        <img src={getStaticImage(feedback.avatar)} alt={feedback.feedback} />
-                                    </div>
-
-                                    <p className={styles.personName}>{feedback.fullName}</p>
+                                  {feedback.video ?
+                                      <VideoCirclePlayer src={getStaticImage(feedback.video)}/>
+                                      :
+                                      <>
+                                        <div className={styles.feedbackText}>
+                                          {feedback.feedback}
+                                        </div>
+                                        <div className={styles.personImg}>
+                                          <img src={getStaticImage(feedback.avatar)} alt={feedback.feedback}/>
+                                        </div>
+                                      </>
+                                  }
+                                  <p className={styles.personName}>{feedback.fullName}</p>
                                 </div>
                             </div>
                         </CarouselItem>

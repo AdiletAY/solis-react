@@ -27,6 +27,9 @@ const Partners = () => {
       setPartners(partnersRes);
     })()
   }, []);
+
+  if (!partners.length) return null;
+
     return (
         <section className={`${styles.container}`}>
             <h2 className={`${styles.title} ${styles.titleUnderline}`}>
