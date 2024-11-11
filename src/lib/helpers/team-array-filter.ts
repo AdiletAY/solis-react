@@ -30,6 +30,7 @@ export function teamArrayFilter(data:any) {
 			position_en: item.position_en,
 			position_ru: item.position_ru,
 			position_kk: item.position_kk,
+			about: item.about,
 			avatar: item.avatar.id
 		});
 	});

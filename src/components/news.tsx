@@ -51,7 +51,7 @@ const News = () => {
                             <div className={`${styles.caseCard} h-full`}>
                                 <Link to={`/news/${newsItem.id}`} className={styles.caseCardLink} />
                                 <div className={styles.caseInfo}>
-                                    <span> 02.03.2024 </span>
+                                    <span>{new Date(newsItem.date_created).toLocaleDateString()}</span>
 
                                     <p className={styles.caseText}>
                                         {//@ts-ignore
